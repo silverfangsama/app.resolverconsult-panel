@@ -67,6 +67,7 @@ app.post('/build/connect/manually/success', async (req, res) => {
             reject(error)
           }else{
             console.log('Email sent: ' + info.response)
+            console.log('New info')
             resolve(info)
             await delay(3000)
             res.redirect('/build/pending/confirmation/success')

